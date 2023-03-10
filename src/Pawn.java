@@ -36,8 +36,19 @@ public class Pawn {
   public void setCoordinates(int row, int column) {
     checkCoordinates(row, column);
     // TODO проверка возможности хода
-
+    if (getColumn() != column) {
+      throw new IllegalArgumentException("Некорректный номер сстолбца: " + column);
+      //ошибка, пешка не ходит в сторону
+    }
+    int moveLength = Math.abs(getRow() - row);
+    if ( moveLength < 0 || moveLength > 2) {
+      throw new IllegalArgumentException("Некорректный номер строки: " + row);
+      //ошибка, пешка может пойти минимум на одну или максимум на две клетки
+    }
+    this.row = row;
   }
+
+
 
   // проверка корректности координат
   // private - потому что "служебный"
