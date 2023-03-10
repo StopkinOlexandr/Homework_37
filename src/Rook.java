@@ -36,8 +36,18 @@ public class Rook {
     checkCoordinates(row, column);
     // TODO проверка возможности хода
 
+    int rowMoveLength = Math.abs(getRow() - row);
+    int columnMoveLength = Math.abs(getColumn() - column);
+    if (columnMoveLength == 0 && rowMoveLength == 0) {
+      throw new IllegalArgumentException("Длина хода равна нулю");
+    }
+    if (columnMoveLength == 0) {
+      this.row = row;
+    }
+    if (rowMoveLength == 0) {
+      this.column = column;
+    }
   }
-
 
 
   // проверка корректности координат
